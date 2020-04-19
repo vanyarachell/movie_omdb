@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:layout_marginTop="@dimen/margin_size_16dp"
+    android:layout_marginStart="@dimen/margin_size_16dp"
+    android:layout_marginEnd="@dimen/margin_size_16dp">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_size_16dp">
+        
+        <ImageView
+            android:id="@+id/iv_movie_list"
+            android:layout_width="@dimen/margin_size_100dp"
+            android:layout_height="@dimen/margin_size_100dp"
+            android:src="@color/colorPrimary"
+            android:layout_marginEnd="@dimen/margin_size_16dp"
+            android:layout_marginRight="@dimen/margin_size_16dp" />
+
+        <TextView
+            android:id="@+id/tv_movie_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_dark"
+            android:layout_toEndOf="@+id/iv_movie_list"
+            android:layout_toRightOf="@+id/iv_movie_list"
+            android:textSize="@dimen/text_size_18"
+            tools:text="Wonder Woman"/>
+
+        <TextView
+            android:id="@+id/tv_movie_list_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_movie_list"
+            android:layout_toRightOf="@+id/iv_movie_list"
+            android:layout_below="@+id/tv_movie_list_title"
+            android:layout_marginTop="@dimen/margin_size_5dp"
+            android:layout_marginEnd="@dimen/margin_size_5dp"
+            android:layout_marginRight="@dimen/margin_size_5dp"
+            android:textStyle="bold"
+            tools:text="2017"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

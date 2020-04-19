@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="daftar_film">Daftar Film</string>
+    <string name="detil_film">Detil Film</string>
+    <string name="separator">-</string>
+    <string name="something_went_wrong">Something went wrong..</string>
+    <string name="an_alien_is_probably_blocking_your_signal">An alien is probably blocking your signal.</string>
+    <string name="retry">Retry</string>
+    <string name="search">Search</string>
+</resources>
