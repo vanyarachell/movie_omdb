@@ -34,9 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAdapter: MainAdapter
     private var list: ArrayList<MovieMdl>? = null
     private var currentPage = 1
-    private var totalPage: Int = 4
+    private var totalPage = 4
     private var keyword = "love"
-    private var newData = true
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -77,26 +76,15 @@ class MainActivity : AppCompatActivity() {
             movieListResult.observe(this@MainActivity, Observer {
                 when (it) {
                     is BaseViewState.Loading -> {
-                        if (mForceRefresh && !mAdapter.isLoading) {
-                            showLoading()
-                        }
+                        showLoading()
                     }
                     is BaseViewState.Success -> {
                         stopLoading()
-
-                        if (newData){
-                            list = ArrayList()
-                            newData = false
-                        }
-                        list!!.addAll(it.data!!.search!!)
-                        mAdapter.addDataAndSubmit(list!!)
-
-                        mAdapter.isLoading = false
+                        mAdapter.setData(it.data!!.search!!)
                     }
                     is BaseViewState.Error -> {
                         stopLoading()
                         if (it.errorMessage!!.contains("connection")){
-                            mAdapter.isLoading = false
                             initNoConnection()
                         }
                     }
@@ -158,7 +146,11 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 //reset list on adapter
-                mViewModel.getMovieList(query, 1)
+                keyword = query
+                currentPage = 1
+                mAdapter.setMoreDataAvailable(true)
+                mAdapter.clearList()
+                mViewModel.getMovieList(query, currentPage)
                 //hide keyboard
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow((currentFocus)!!.windowToken, 0)

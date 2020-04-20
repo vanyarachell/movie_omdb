@@ -53,13 +53,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun nextPageFromApi(keyword : String) {
-        mPage++
-        if (mPage < 5) {
-            getMovieList(keyword, mPage)
-        }
-    }
-
     fun forceLoadMovie(keyword : String, page : Int) {
         mForceRefresh = true
         _mMovieListResult.value = null
